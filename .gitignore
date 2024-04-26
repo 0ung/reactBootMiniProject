@@ -135,9 +135,11 @@ sketch
 
 
 # 그래들 업로드
-demo/.grdale/**
+demo/.gradle/**
 demo/help.md
 demo/build.gradle
 demo/gradle/**
 demo/settings.gradle
 application.yml
+gradlew
+gradlew.bat
