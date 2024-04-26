@@ -132,3 +132,12 @@ thumb
 sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,react
+
+
+# 그래들 업로드
+demo/.grdale/**
+demo/help.md
+demo/build.gradle
+demo/gradle/**
+demo/settings.gradle
+application.yml
