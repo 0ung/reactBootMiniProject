@@ -1,5 +1,11 @@
 import React from "react";
 import { styled } from "styled-components";
+import {
+  GUESTBOOK,
+  LOGIN,
+  MAIN,
+  PORTFOLIO_VIEWS,
+} from "../constants/page_constants";
 
 const HeaderDiv = styled.div`
   height: 10vh;
@@ -22,7 +28,7 @@ function Header() {
   return (
     <HeaderDiv>
       <div className="col">
-        <StyledLink className="navbar nav-link" href="#">
+        <StyledLink className="navbar nav-link" href={MAIN}>
           포트폴리오
         </StyledLink>
       </div>
@@ -32,18 +38,18 @@ function Header() {
             <StyledLink
               className="nav-link active"
               aria-current="page"
-              href="#"
+              href={PORTFOLIO_VIEWS}
             >
               포트폴리오 관리
             </StyledLink>
           </li>
           <li className="nav-item">
-            <StyledLink className="nav-link" href="#">
+            <StyledLink className="nav-link" href={GUESTBOOK}>
               방명록
             </StyledLink>
           </li>
           <li className="nav-item">
-            <StyledLink className="nav-link" href="#">
+            <StyledLink className="nav-link" href={LOGIN}>
               로그인
             </StyledLink>
           </li>

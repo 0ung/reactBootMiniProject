@@ -2,8 +2,14 @@ import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import CustomButton from "../components/CustomButton";
+import { useNavigate } from "react-router-dom";
+import { SING_UP } from "../constants/page_constants";
 
 function LoginPage() {
+  const navigation = useNavigate();
+  const handleSignUp = () => {
+    navigation(SING_UP);
+  };
   return (
     <>
       <Header />
@@ -35,7 +41,11 @@ function LoginPage() {
             name="password"
           />
         </div>
-        <CustomButton type="button" className="btn btn-primary">
+        <CustomButton
+          type="button"
+          className="btn btn-primary"
+          onClick={handleSignUp}
+        >
           회원가입
         </CustomButton>
         <CustomButton type="button" className="btn btn-primary m-3">
