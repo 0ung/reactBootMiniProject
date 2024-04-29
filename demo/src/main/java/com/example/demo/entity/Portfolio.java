@@ -42,4 +42,6 @@ public class Portfolio extends BaseTimeEntity {
 
 	private boolean main;
 
+	private String introducedLine;
+
 }

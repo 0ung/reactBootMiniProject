@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import CustomButton from "../components/CustomButton";
 
 function PortfolioVeiw() {
+  const [title, setTitle] = useState("");
+  const [detail, setDetail] = useState("");
+  const [introducedLine, setIntroducedLine] = useState("");
+  const [techStack, setTechStack] = useState("");
+  const [img, setImg] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [main, isMain] = useState("");
   return (
     <>
       <Header />
@@ -20,6 +29,7 @@ function PortfolioVeiw() {
             aria-label="Username"
             aria-describedby="basic-addon1"
             name="name"
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="form-floating mt-4">
@@ -28,6 +38,7 @@ function PortfolioVeiw() {
             placeholder="프로젝트에 대해서 자세한 설명 작성해주세요!"
             id="floatingTextarea2"
             style={{ height: 200 }}
+            onChange={(e) => setDetail(e.target.value)}
           ></textarea>
           <label htmlFor="floatingTextarea2">상세 설명</label>
         </div>
@@ -41,7 +52,7 @@ function PortfolioVeiw() {
             placeholder="간단한 프로젝트 소개글 작성해주세요!"
             aria-label="Username"
             aria-describedby="basic-addon1"
-            name="name"
+            onChange={(e) => setIntroducedLine(e.target.value)}
           />
         </div>
         <div className="input-group mb-3 mt-4">
@@ -54,12 +65,17 @@ function PortfolioVeiw() {
             placeholder="프로젝트에 사용된 기술 스택을 작성해주세요!"
             aria-label="Username"
             aria-describedby="basic-addon1"
-            name="name"
+            onChange={(e) => setTechStack(e.target.value)}
           />
         </div>
         <div className="mb-3">
           <label htmlFor="formFile" className="form-label"></label>
-          <input className="form-control" type="file" id="formFile" />
+          <input
+            className="form-control"
+            type="file"
+            id="formFile"
+            onChange={(e) => setImg(e.target.value)}
+          />
         </div>
         <div className="input-group mb-3 mt-4">
           <span className="input-group-text" id="basic-addon1">
@@ -71,6 +87,7 @@ function PortfolioVeiw() {
             placeholder="연락처를 작성해주세요!"
             aria-label="Username"
             aria-describedby="basic-addon1"
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
         </div>
         <div className="input-group mb-3 mt-4">
@@ -83,7 +100,7 @@ function PortfolioVeiw() {
             placeholder="이름을 작성해주세요!"
             aria-label="Username"
             aria-describedby="basic-addon1"
-            name="name"
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
 
@@ -97,7 +114,7 @@ function PortfolioVeiw() {
             placeholder="이메일을 작성해주세요!"
             aria-label="Username"
             aria-describedby="basic-addon1"
-            name="name"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="form-check">
