@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import CustomButton from "../components/CustomButton";
+import fetcher from "../fetcher";
+import { PORTFOLIO_SAVE_API } from "../constants/api_constants";
 
 function PortfolioVeiw() {
   const [title, setTitle] = useState("");
@@ -13,6 +15,37 @@ function PortfolioVeiw() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [main, isMain] = useState("");
+
+  //요청
+  const handleSumbit = async () => {
+    const formData1 = new FormData();
+    const formData2 = new FormData();
+
+    // 첫 번째 FormData에 포트폴리오 데이터 추가
+    formData1.append("title", title);
+    formData1.append("detail", detail);
+    formData1.append("introducedLine", introducedLine);
+    formData1.append("techStack", techStack);
+    formData1.append("phoneNumber", phoneNumber);
+    formData1.append("name", name);
+    formData1.append("email", email);
+    formData1.append("main", main);
+
+    // 두 번째 FormData에 이미지 파일 추가
+    formData2.append("image", img);
+
+    // 두 FormData를 합쳐서 전송
+    const formData = new FormData();
+    for (let key of formData1.keys()) {
+      formData.append(key, formData1.get(key));
+    }
+    for (let key of formData2.keys()) {
+      formData.append(key, formData2.get(key));
+    }
+
+    const response = await fetcher.post(PORTFOLIO_SAVE_API, formData);
+  };
+
   return (
     <>
       <Header />
@@ -129,7 +162,9 @@ function PortfolioVeiw() {
           </label>
         </div>
         <div colSpan="5" style={{ textAlign: "right" }}>
-          <CustomButton className="btn btn-primary">제출</CustomButton>
+          <CustomButton className="btn btn-primary" onClick={handleSumbit}>
+            제출
+          </CustomButton>
         </div>
       </div>
       <Footer />

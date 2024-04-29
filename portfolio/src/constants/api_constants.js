@@ -8,3 +8,4 @@ export const GUESTBOOK_ALL_API = "/guestbook/";
 export const GUESTBOOK_TOTAL_API = "/guestbook/total";
 export const GUESTBOOK_UPDATE_API = "/guestbook/update";
 export const GUESTBOOK_DELETE_API = "/guestbook/delete/";
+export const PORTFOLIO_SAVE_API = "/portfolio/save";

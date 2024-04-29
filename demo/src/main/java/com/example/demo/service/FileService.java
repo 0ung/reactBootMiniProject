@@ -15,13 +15,13 @@ public class FileService {
 
 	@Value("${itemImgLocation}")
 	private String imgLocation;
-
-	public void saveFile(MultipartFile file) {
-		try {
-			Path directory = Paths.get(imgLocation);
-			if(!Files.exists(directory)){
-				Files.createDirectories(directory);
-			}
-		}
-	}
+//
+//	public void saveFile(MultipartFile file) {
+//		try {
+//			Path directory = Paths.get(imgLocation);
+//			if(!Files.exists(directory)){
+//				Files.createDirectories(directory);
+//			}
+//		}
+//	}
 }
