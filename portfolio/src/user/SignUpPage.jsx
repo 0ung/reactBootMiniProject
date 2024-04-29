@@ -3,6 +3,10 @@ import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import styled from "styled-components";
 import CustomButton from "../components/CustomButton";
+import fetcher from "../fetcher";
+import { CHECKID, SINGUP } from "../constants/api_constants";
+import { MAIN } from "../constants/page_constants";
+import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
   const [id, setId] = useState("");
@@ -10,7 +14,9 @@ function SignUpPage() {
   const [vaildatePasswords, setVaildatePasswords] = useState("");
   const [email, setEmail] = useState("");
   const [signUp, isSignUp] = useState(false);
+  const [dupilcate, setDupilcate] = useState(false);
 
+  const navigation = useNavigate();
   // 유효성 검사
   const vaildateID = () => {
     const idRegExp = new RegExp(/^[a-zA-Z\d]{8,15}$/);
@@ -38,7 +44,7 @@ function SignUpPage() {
       vaildatePassword() &&
       vaildateSamePassword() &&
       vaildateEmail() &&
-      validateDuplicate()
+      dupilcate
     ) {
       isSignUp(true);
       return true; // 반환값 추가
@@ -48,21 +54,55 @@ function SignUpPage() {
     isSignUp(false);
     return false; // 반환값 추가
   };
-  const validateDuplicate = () => {
-    return true;
+
+  const validateDuplicate = async () => {
+    try {
+      const formdata = {
+        memberId: id,
+      };
+      const response = await fetcher.post(CHECKID, formdata, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setDupilcate(true);
+      return true;
+    } catch (error) {
+      if (error.status === 400) {
+        alert("중복된 회원입니다.");
+        setDupilcate(false);
+        return false;
+      }
+    }
+    alert("중복된 회원입니다.");
+    return false;
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
+    console.log(signUp);
     if (!signUp) {
       alert("입력창을 확인해주세요");
       return;
     }
-    console.log("회원가입 시작");
+    try {
+      const data = {
+        id: id,
+        password: password,
+        email: email,
+      };
+      const response = await fetcher.post(SINGUP, data);
+      alert(response.data);
+      navigation(MAIN);
+      return;
+    } catch (error) {
+      alert("회원가입 실패" + error);
+      return; // 에러가 발생한 경우 함수를 즉시 종료합니다.
+    }
   };
 
   useEffect(() => {
     condition();
-  }, [id, password, vaildatePasswords, email, signUp]);
+  }, [id, password, vaildatePasswords, email, signUp, dupilcate]);
 
   return (
     <>
@@ -83,10 +123,13 @@ function SignUpPage() {
             onChange={(e) => {
               setId(e.target.value);
               vaildateID();
+              setDupilcate(false);
             }}
           />
         </div>
-        {vaildateID() ? (
+        {dupilcate ? (
+          <p style={{ color: "green" }}>회원가입 가능합니다.</p>
+        ) : vaildateID() ? (
           <CustomButton
             type="button"
             className="btn btn-primary"
