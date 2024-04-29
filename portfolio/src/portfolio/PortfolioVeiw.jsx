@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
+import CustomButton from "../components/CustomButton";
 
 function PortfolioVeiw() {
   return (
@@ -28,7 +29,7 @@ function PortfolioVeiw() {
             id="floatingTextarea2"
             style={{ height: 200 }}
           ></textarea>
-          <label htmlForfor="floatingTextarea2">상세 설명</label>
+          <label htmlFor="floatingTextarea2">상세 설명</label>
         </div>
         <div className="input-group mb-3 mt-4">
           <span className="input-group-text" id="basic-addon1">
@@ -37,7 +38,7 @@ function PortfolioVeiw() {
           <input
             type="text"
             className="form-control"
-            placeholder="간단한게 프로젝트 소개글 작성해주세요!"
+            placeholder="간단한 프로젝트 소개글 작성해주세요!"
             aria-label="Username"
             aria-describedby="basic-addon1"
             name="name"
@@ -56,9 +57,62 @@ function PortfolioVeiw() {
             name="name"
           />
         </div>
-        <div class="mb-3">
-          <label for="formFile" class="form-label"></label>
-          <input class="form-control" type="file" id="formFile" />
+        <div className="mb-3">
+          <label htmlFor="formFile" className="form-label"></label>
+          <input className="form-control" type="file" id="formFile" />
+        </div>
+        <div className="input-group mb-3 mt-4">
+          <span className="input-group-text" id="basic-addon1">
+            연락처
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="연락처를 작성해주세요!"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div className="input-group mb-3 mt-4">
+          <span className="input-group-text" id="basic-addon1">
+            이름
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="이름을 작성해주세요!"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            name="name"
+          />
+        </div>
+
+        <div className="input-group mb-3 mt-4">
+          <span className="input-group-text" id="basic-addon1">
+            메일 주소
+          </span>
+          <input
+            type="email"
+            className="form-control"
+            placeholder="이메일을 작성해주세요!"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            name="name"
+          />
+        </div>
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label className="form-check-label" htmlFor="flexCheckDefault">
+            대표 프로젝트
+          </label>
+        </div>
+        <div colSpan="5" style={{ textAlign: "right" }}>
+          <CustomButton className="btn btn-primary">제출</CustomButton>
         </div>
       </div>
       <Footer />

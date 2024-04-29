@@ -22,12 +22,12 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center mt-5 mb-5">
       <nav aria-label="Page navigation">
-        <ul class="pagination">
-          <li class="page-item">
+        <ul className="pagination">
+          <li className="page-item">
             <button
-              class="page-link"
+              className="page-link"
               onClick={handlePrevGroup}
               disabled={groupStart === 1}
             >
@@ -39,12 +39,12 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             return (
               <li
                 key={pageNumber}
-                class={`page-item ${
+                className={`page-item ${
                   pageNumber === currentPage ? "active" : ""
                 }`}
               >
                 <button
-                  class="page-link"
+                  className="page-link"
                   onClick={() => handlePageClick(pageNumber)}
                 >
                   {pageNumber}
@@ -52,9 +52,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
               </li>
             );
           })}
-          <li class="page-item">
+          <li className="page-item">
             <button
-              class="page-link"
+              className="page-link"
               onClick={handleNextGroup}
               disabled={groupEnd === totalPages}
             >

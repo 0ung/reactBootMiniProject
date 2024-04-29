@@ -77,20 +77,22 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <CustomButton
-          type="button"
-          className="btn btn-primary"
-          onClick={handleSignUp}
-        >
-          회원가입
-        </CustomButton>
-        <CustomButton
-          type="button"
-          className="btn btn-primary m-3"
-          onClick={handleLogin}
-        >
-          로그인
-        </CustomButton>
+        <div colSpan="5" style={{ textAlign: "right" }}>
+          <CustomButton
+            type="button"
+            className="btn btn-primary"
+            onClick={handleSignUp}
+          >
+            회원가입
+          </CustomButton>
+          <CustomButton
+            type="button"
+            className="btn btn-primary m-3"
+            onClick={handleLogin}
+          >
+            로그인
+          </CustomButton>
+        </div>
       </div>
       <Footer />
     </>
